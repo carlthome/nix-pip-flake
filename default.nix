@@ -7,13 +7,7 @@ pkgs.mkShell rec {
   buildInputs = [
     python3Packages.python
     python3Packages.venvShellHook
-    #taglib
-    #openssl
-    #git
-    #libxml2
-    #libxslt
-    #libzip
-    #zlib
+    stdenv.cc.cc.lib
   ];
 
   postVenvCreation = ''
@@ -23,6 +17,7 @@ pkgs.mkShell rec {
 
   postShellHook = ''
     unset SOURCE_DATE_EPOCH
+    export LD_LIBRARY_PATH=${stdenv.cc.cc.lib}/lib
     ipython --pylab
   '';
 }
