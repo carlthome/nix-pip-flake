@@ -8,7 +8,6 @@ pkgs.mkShell {
     python3Packages.python
     python3Packages.ipython
     python3Packages.venvShellHook
-    stdenv.cc.cc.lib
   ];
 
   postVenvCreation = ''
@@ -18,6 +17,6 @@ pkgs.mkShell {
 
   postShellHook = ''
     unset SOURCE_DATE_EPOCH
-    export LD_LIBRARY_PATH=${pkgs.stdenv.cc.cc.lib}/lib
+    export LD_LIBRARY_PATH=${pkgs.zlib}/lib:${pkgs.stdenv.cc.cc.lib}/lib:$LD_LIBRARY_PATH
   '';
 }
