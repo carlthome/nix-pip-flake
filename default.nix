@@ -6,6 +6,7 @@ pkgs.mkShell rec {
 
   buildInputs = [
     python3Packages.python
+    python3Packages.ipython
     python3Packages.venvShellHook
     stdenv.cc.cc.lib
   ];
