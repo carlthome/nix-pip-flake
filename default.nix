@@ -1,10 +1,10 @@
 { pkgs ? import <nixpkgs> { }, ... }:
-with pkgs;
-pkgs.mkShell rec {
+
+pkgs.mkShell {
   name = "python";
   venvDir = "./.venv";
 
-  buildInputs = [
+  packages = with pkgs; [
     python3Packages.python
     python3Packages.ipython
     python3Packages.venvShellHook
@@ -18,7 +18,6 @@ pkgs.mkShell rec {
 
   postShellHook = ''
     unset SOURCE_DATE_EPOCH
-    export LD_LIBRARY_PATH=${stdenv.cc.cc.lib}/lib
-    ipython --pylab
+    export LD_LIBRARY_PATH=${pkgs.stdenv.cc.cc.lib}/lib
   '';
 }
