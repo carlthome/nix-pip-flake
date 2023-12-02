@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs ? import <nixpkgs> { }, ... }:
 with pkgs;
 pkgs.mkShell rec {
   name = "python";
@@ -21,4 +21,3 @@ pkgs.mkShell rec {
     ipython --pylab
   '';
 }
-
