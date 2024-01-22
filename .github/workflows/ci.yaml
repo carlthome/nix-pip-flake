@@ -5,7 +5,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: nixbuild/nix-quick-install-action@v26
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         with:
           path: .venv
           key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
